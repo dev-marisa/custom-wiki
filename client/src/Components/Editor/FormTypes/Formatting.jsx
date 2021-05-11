@@ -1,9 +1,18 @@
 import React from 'react';
 import Button from './Button';
 
+
+
+
 const Formatting = props => {
 
   const apply = type => {
+    const acceptedTags = ["p", "ul", "ol", "blockquote"];
+    // if the tag isn't one of the accepted tags
+    // don't allow further formatting
+    if(!acceptedTags.includes(props.tag)) {
+      return;
+    }
     const selection = window.getSelection();
     console.log(type);
     console.log(selection);
@@ -43,12 +52,14 @@ const Formatting = props => {
           <Button active={props.tag === "ol"} tooltip="Ordered List" click={e => props.setTag("ol")}>
             <i className="fas fa-list-ol"></i>
           </Button>
-          <Button active={false} tooltip="Indent">
+          {/* Do we need to allow the user to indent or outdent lists? */}
+          {/* Seems like a nice to have for now */}
+          {/* <Button active={false} tooltip="Indent">
             <i className="fas fa-indent"></i>
           </Button>
           <Button active={false} tooltip="Outdent">
             <i className="fas fa-outdent"></i>
-          </Button>
+          </Button> */}
         </div>
       </div>
       <div className="border p5">
@@ -75,7 +86,7 @@ const Formatting = props => {
           <Button active={props.tag === "file"} tooltip="File Download" click={e => props.setTag("file")}>
             <i className="fas fa-file-download"></i>
           </Button>
-          <Button active={props.tag === "embed"} tooltip="Embed" click={e => props.setTag("embed")}>
+          <Button active={props.tag === "iframe"} tooltip="Embed" click={e => props.setTag("iframe")}>
             <i className="far fa-play-circle"></i>
           </Button>
           <Button active={props.tag === "pre"} tooltip="Code Block" click={e => props.setTag("pre")}>
@@ -104,7 +115,7 @@ const Formatting = props => {
         </div>
       </div>
       <div className="border p5">
-        <div className="form-text mt0">Font</div>
+        <div className="form-text mt0">Inline</div>
         <div className="btn-group">
           <Button active={false} tooltip="Bold" click={e => apply("strong")}>
             <i className="fas fa-bold"></i>
@@ -115,11 +126,11 @@ const Formatting = props => {
           <Button active={false} tooltip="Underline" click={e => apply("u")}>
             <i className="fas fa-underline"></i>
           </Button>
-          <Button active={false} tooltip="Font">
-            <i className="fas fa-font"></i>
+          <Button active={false} tooltip="Link">
+            <i className="fas fa-link"></i>
           </Button>
-          <Button active={false} tooltip="Icon">
-            <i className="far fa-flag"></i>
+          <Button active={false} tooltip="Inline Code" click={e => apply("code")}>
+            <i className="fas fa-code"></i>
           </Button>
         </div>
       </div>

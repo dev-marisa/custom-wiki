@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import Button from '../Button';
+import { ParagraphModel } from './models';
 
 const ParagraphForm = props => {
 
@@ -7,6 +7,7 @@ const ParagraphForm = props => {
 
   const done = e => {
     e.preventDefault();
+    props.done(new ParagraphModel(props.tag, editorEl.current.innerHTML, props.align, "", "", ""));
   }
 
   const cancel = e => {
@@ -15,7 +16,6 @@ const ParagraphForm = props => {
   }
 
   return (
-    <>
     <form onSubmit={done} onReset={cancel}>
       <p id="editor-p" contentEditable="true"
         ref={editorEl}
@@ -30,7 +30,6 @@ const ParagraphForm = props => {
       <button type="submit" className="btn btn-outline-primary">Done</button>
       <button type="reset" className="btn btn-outline-secondary">Cancel</button>
     </form>
-    </>
   );
 
 }

@@ -1,3 +1,8 @@
+// front end models so I can keep the type of data I'm working with straight
+// but as Lilith says "I hate anything straight" 
+
+
+// remove excess spaces in the _html
 String.prototype.formatSpace = function() {
     let res = "", prev = null;
     for(let letter of this) {
@@ -9,7 +14,31 @@ String.prototype.formatSpace = function() {
     return res;
 }
 
+// class for sections containing a paragraph
+// going to just store the content as a string ¯\_(ツ)_/¯
+// this is pretty much the same as header but I can do something 
+// different with it later maybe
+export class ParagraphModel {
 
+    constructor(tagName, content, align, style, id, classes) {
+        this.tagName = tagName;
+        this.content = content;
+        this.align = align;
+        this.style = style;
+        this.id = id;
+        this.classes = classes;
+    }
+
+    _html() {
+        let _id, _class, _style, _align;
+        this.id ? _id = `id="${this.id}"` : _id = "";
+        this.classes ? _class = `class="${this.classes}"` : _class = "";
+        this.align ? _align = `text-align:${this.align};` : _align = "";
+        _style = `style="${_align+this.style}"`;
+        return `<${this.tagName} ${_id} ${_class} ${_style}>${this.content}</${this.tagName}>`.formatSpace();
+    }
+
+}
 
 // class for sections containing an header
 // like: h1, h2, h3, h4...
@@ -61,6 +90,70 @@ export class ImageModel {
         return `<figure ${_align} >
             <img src="${this.src}" alt="${this.alt}" ${_id} ${_class} ${_style} />
         </figure>`.formatSpace();
+    }
+
+}
+
+// class for sections containing embed code
+// typically an iframe from youtube or vimeo
+export class EmbedModel {
+
+    constructor(tagName, content) {
+        this.tagName = tagName;
+        this.content = content;
+    }
+
+    // don't really need to do anything with this one!
+    _html() {
+        return this.content;
+    }
+
+}
+
+// class for sections containing blockquotes
+// pretty identical to paragraphs
+export class BlockquoteModel {
+
+    constructor(tagName, content, align, style, id, classes) {
+        this.tagName = tagName;
+        this.content = content;
+        this.align = align;
+        this.style = style;
+        this.id = id;
+        this.classes = classes;
+    }
+
+    _html() {
+        let _id, _class, _style, _align;
+        this.id ? _id = `id="${this.id}"` : _id = "";
+        this.classes ? _class = `class="${this.classes}"` : _class = "";
+        this.align ? _align = `text-align:${this.align};` : _align = "";
+        _style = `style="${_align+this.style}"`;
+        return `<${this.tagName} ${_id} ${_class} ${_style}>${this.content}</${this.tagName}>`.formatSpace();
+    }
+
+}
+
+// list model for ul and ol
+// similar to paragraphs and blockquotes
+// didn't make sense to apply align on this one
+// maybe I'll change my mind we'll see!
+export class ListModel {
+
+    constructor(tagName, content, style, id, classes) {
+        this.tagName = tagName;
+        this.content = content;
+        this.style = style;
+        this.id = id;
+        this.classes = classes;
+    }
+
+    _html() {
+        let _id, _class, _style;
+        this.id ? _id = `id="${this.id}"` : _id = "";
+        this.classes ? _class = `class="${this.classes}"` : _class = "";
+        _style = `style="${this.style}"`;
+        return `<${this.tagName} ${_id} ${_class} ${_style}>${this.content}</${this.tagName}>`.formatSpace();
     }
 
 }
