@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FormSelector from './FormTypes/FormSelector';
 
 
+// these boxes allow us to add new content exactly where we want it! 
 const AddSection = props => {
 
   const [isEditing, setIsEditing] = useState(false);

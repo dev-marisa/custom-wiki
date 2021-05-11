@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ImageModel } from './models';
 
+
+// helper function for formatting our style a bit
 function formatStyle(style) {
   let str = JSON.stringify(style);
   let res = "";
@@ -16,7 +18,8 @@ function formatStyle(style) {
   return res;
 }
 
-// Present a form to the user
+// Image upload is complicated
+// probably put too much time into this one...
 const ImageForm = props => {
   
   const [name, setName] = useState("not selected");

@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { ParagraphModel } from './models';
 
+
+// paragraphs are not as involved as I expected
 const ParagraphForm = props => {
 
   const editorEl = useRef(null);

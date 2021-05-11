@@ -1,5 +1,8 @@
 // front end models so I can keep the type of data I'm working with straight
 // but as Lilith says "I hate anything straight" 
+// really I just need the markup so it can be displayed but I guess I have
+// higher ambitions for what we'll store in the DB
+// each class will have an _html() method to retrieve the markup
 
 
 // remove excess spaces in the _html

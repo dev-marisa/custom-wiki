@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Formatting from './Formatting';
+import Match from './Match';
 import HeadingForm from './Forms/HeadingForm';
 import ImageForm from './Forms/ImageForm';
 import ParagraphForm from './Forms/ParagraphForm';
@@ -7,14 +8,8 @@ import BlockquoteForm from './Forms/BlockquoteForm';
 import EmbedForm from './Forms/EmbedForm';
 import ListForm from './Forms/ListForm';
 
-// Displays the children if they match the pattern
-const Match = props => {
-  return (
-    props.pattern.test(props.tag.toLowerCase()) ? props.children : ""
-  );
-}
 
-// selector to pick the type of form
+// When the user is editing a section, what is the type of form to display
 const FormSelector = props => {
 
   const [tag, setTag] = useState("h1");
@@ -33,6 +28,7 @@ const FormSelector = props => {
     console.log(tag);
   }, [tag]);
 
+  // Match will display the child node if the tag matches the pattern
   return (
     <div className="outline-grey">
 
@@ -83,8 +79,6 @@ const FormSelector = props => {
       <Match tag={tag} pattern={/^(pre)$/}>
         <p className="text-primary text-center py-3">TODO: "{tag}" not implemented</p>
       </Match>
-
-      
 
     </div>
   );

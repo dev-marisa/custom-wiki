@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { HeaderModel } from './models';
 
-// Present a form to the user
+// from for creating a header: h1, h2, h3, h4 
+// do we need h5 and h6?
 const HeadingForm = props => {
   
   const [style, setStyle] = useState("")
-  const [id, setId] = useState("");
-  const [classes, setClasses] = useState("");
-  let textInput = null;
+  // const [id, setId] = useState("");
+  // const [classes, setClasses] = useState("");
 
+  // should really do something with this huh?
+  let textInput = useRef(null);
 
   // quick reference for header styles
   const headerStyles = {
@@ -20,14 +22,13 @@ const HeadingForm = props => {
 
   const done = e => {
     e.preventDefault();
-    props.done(new HeaderModel(props.tag, props.text, props.align, style, id, classes));
+    props.done(new HeaderModel(props.tag, props.text, props.align, style, "", ""));
   }
 
   const cancel = e => {
     e.preventDefault();
     props.cancel("cancelling");
   }
-
 
   return (
     <form onSubmit={done} onReset={cancel}>
@@ -38,10 +39,8 @@ const HeadingForm = props => {
           onChange={e => props.setText(e.target.value)} 
           style={{...headerStyles[props.tag], textAlign: props.align}}
           value={props.text} 
-          ref={(input) => { textInput = input; }}
+          ref={textInput} 
         />
-        {/* add the ref back in for focus control later */}
-        {/* ref={(input) => { textInput = input; }} */}
       </div>
       <div className="input-group mb-3">
         <span className="input-group-text">Custom Style</span>

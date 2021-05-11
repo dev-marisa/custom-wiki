@@ -1,13 +1,15 @@
 import React, { useRef, useEffect } from 'react';
 import { BlockquoteModel } from './models';
 
+
+// basically a glorified paragraph...
 const BlockquoteForm = props => {
 
   const editorEl = useRef(null);
 
   const done = e => {
     e.preventDefault();
-    // makes sense to give it the blockquote class by default
+    // makes sense to give it the blockquote css class by default
     props.done(new BlockquoteModel(props.tag, editorEl.current.innerHTML, props.align, "", "", "blockquote"));
   }
 

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { EmbedModel } from './models';
 
+
+// pretty basic form
+// embed will be like an iframe from youtube or vimeo
 const EmbedForm = props => {
 
   const [text, setText] = useState("");

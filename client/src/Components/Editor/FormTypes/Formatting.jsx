@@ -2,10 +2,10 @@ import React from 'react';
 import Button from './Button';
 
 
-
-
+// Basically shove all of our buttons into one component! 
 const Formatting = props => {
 
+  // applies inline formatting to text
   const apply = type => {
     const acceptedTags = ["p", "ul", "ol", "blockquote"];
     // if the tag isn't one of the accepted tags
@@ -37,6 +37,9 @@ const Formatting = props => {
 
   return (
     <div className="d-flex flex-wrap justify-content-center">
+
+      {/* I have higher ambitions for this section, mostly just grid / columns */}
+      {/* but it made sense to put tables and lists in here too */}
       <div className="border p5">
         <div className="form-text mt0">Layout</div>
         <div className="btn-group">
@@ -62,6 +65,8 @@ const Formatting = props => {
           </Button> */}
         </div>
       </div>
+
+      {/* Various headers or other content to pick from */}
       <div className="border p5">
         <div className="form-text mt0">Type</div>
         <div className="btn-group">
@@ -97,6 +102,8 @@ const Formatting = props => {
           </Button>
         </div>
       </div>
+
+      {/* Control alignment here */}
       <div className="border p5">
         <div className="form-text mt0">Align</div>
         <div className="btn-group">
@@ -114,6 +121,8 @@ const Formatting = props => {
           </Button>
         </div>
       </div>
+
+      {/* Tags for formatting text inside other sections */}
       <div className="border p5">
         <div className="form-text mt0">Inline</div>
         <div className="btn-group">

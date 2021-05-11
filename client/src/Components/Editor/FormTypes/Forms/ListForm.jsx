@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { ListModel } from './models';
 
+
+// lists are not as involved as I expected
 const ListForm = props => {
 
   const editorEl = useRef(null);
