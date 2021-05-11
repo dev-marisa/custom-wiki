@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/custom-wiki/static/css/main.1a6e359a.chunk.css",
+    "main.js": "/custom-wiki/static/js/main.662ca8c0.chunk.js",
+    "main.js.map": "/custom-wiki/static/js/main.662ca8c0.chunk.js.map",
+    "runtime-main.js": "/custom-wiki/static/js/runtime-main.b68f456f.js",
+    "runtime-main.js.map": "/custom-wiki/static/js/runtime-main.b68f456f.js.map",
+    "static/css/2.5b962c77.chunk.css": "/custom-wiki/static/css/2.5b962c77.chunk.css",
+    "static/js/2.70c46688.chunk.js": "/custom-wiki/static/js/2.70c46688.chunk.js",
+    "static/js/2.70c46688.chunk.js.map": "/custom-wiki/static/js/2.70c46688.chunk.js.map",
+    "index.html": "/custom-wiki/index.html",
+    "static/css/2.5b962c77.chunk.css.map": "/custom-wiki/static/css/2.5b962c77.chunk.css.map",
+    "static/css/main.1a6e359a.chunk.css.map": "/custom-wiki/static/css/main.1a6e359a.chunk.css.map",
+    "static/js/2.70c46688.chunk.js.LICENSE.txt": "/custom-wiki/static/js/2.70c46688.chunk.js.LICENSE.txt",
+    "static/media/all.css": "/custom-wiki/static/media/fa-solid-900.efbd5d20.eot"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b68f456f.js",
+    "static/css/2.5b962c77.chunk.css",
+    "static/js/2.70c46688.chunk.js",
+    "static/css/main.1a6e359a.chunk.css",
+    "static/js/main.662ca8c0.chunk.js"
+  ]
+}
