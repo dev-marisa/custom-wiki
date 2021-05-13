@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { ParagraphModel } from './models';
 
 
@@ -17,16 +17,45 @@ const ParagraphForm = props => {
     props.cancel();
   }
 
+  const keypress = e => {
+    console.log(e);
+    if(e.keyCode === 9) {
+      e.preventDefault();
+      // Tab should add 4 spaces to the current line
+      const selection = window.getSelection();
+      console.log(selection);
+      if(selection.anchorNode !== selection.focusNode) {
+        // TODO: allow indenting multiple lines
+        return;
+      } else {
+        let start = Math.min(selection.anchorOffset, selection.focusOffset);
+        let text = selection.focusNode.nodeValue;
+        let newText = text.substring(0, start) + "    " + text.substring(start, text.length);
+        selection.focusNode.nodeValue = newText;
+      }
+    }
+    // these are the arrow keys
+    // if([37, 38, 39, 40].includes(e.keyCode) {
+    //   // TODO: check the cursor position
+    // }
+  }
+
+  useEffect(() => {
+    editorEl.current.appendChild(document.createTextNode(""));
+  }, [props.tag]);
+
   return (
     <form onSubmit={done} onReset={cancel}>
       <p id="editor-p" contentEditable="true"
         ref={editorEl}
+        onKeyDown={keypress}
         style={{
           width: "100%",
           minHeight: "50px",
           boxSizing: "border-box",
           outline: "2px dashed #ccc",
           padding: "20px",
+          whiteSpace: "pre",
           textAlign: props.align
         }}></p>
       <button type="submit" className="btn btn-outline-primary">Done</button>
