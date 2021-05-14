@@ -88,6 +88,10 @@ const ListForm = props => {
         ref={editorEl} style={listStyle} onKeyDown={keypress}></ol> : "" }
       <button type="submit" className="btn btn-outline-primary">Done</button>
       <button type="reset" className="btn btn-outline-secondary">Cancel</button>
+      { props.ele ? 
+        <button type="button" className="btn btn-outline-danger" onClick={props?.remove}>
+          Remove
+        </button> : ""}
     </form>
   );
 
