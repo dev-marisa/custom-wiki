@@ -160,3 +160,26 @@ export class ListModel {
     }
 
 }
+
+// table model
+// similar to lists
+// didn't make sense to apply align on this one either
+export class TableModel {
+
+    constructor(tagName, content, style, id, classes) {
+        this.tagName = tagName;
+        this.content = content;
+        this.style = style;
+        this.id = id;
+        this.classes = classes;
+    }
+
+    _html() {
+        let _id, _class, _style;
+        this.id ? _id = `id="${this.id}"` : _id = "";
+        this.classes ? _class = `class="${this.classes}"` : _class = "";
+        _style = `style="${this.style}"`;
+        return `<${this.tagName} ${_id} ${_class} ${_style}>${this.content}</${this.tagName}>`.formatSpace();
+    }
+
+}

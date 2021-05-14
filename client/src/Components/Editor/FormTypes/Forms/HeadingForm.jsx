@@ -1,13 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { HeaderModel } from './models';
 
 // from for creating a header: h1, h2, h3, h4 
 // do we need h5 and h6?
 const HeadingForm = props => {
   
-  const [style, setStyle] = useState("")
+  // const [style, setStyle] = useState("")
   // const [id, setId] = useState("");
   // const [classes, setClasses] = useState("");
+  const [text, setText] = useState("");
 
   // should really do something with this huh?
   let textInput = useRef(null);
@@ -22,7 +23,7 @@ const HeadingForm = props => {
 
   const done = e => {
     e.preventDefault();
-    props.done(new HeaderModel(props.tag, props.text, props.align, style, "", ""));
+    props.done(new HeaderModel(props.tag, text, props.align, "", "", ""));
   }
 
   const cancel = e => {
@@ -30,26 +31,34 @@ const HeadingForm = props => {
     props.cancel("cancelling");
   }
 
+  useEffect(() => {
+    console.log("text", props)
+    if(props.ele) {
+      setText(props.ele.text);
+    }
+    textInput.current.focus();
+  }, [props.tag]);
+
   return (
     <form onSubmit={done} onReset={cancel}>
       <div className="input-group my-3">
         <span className="input-group-text" style={{width:"50px"}}>{props.tag}</span>
         <input type="text" 
           className="form-control mb0" 
-          onChange={e => props.setText(e.target.value)} 
+          onChange={e => setText(e.target.value)} 
           style={{...headerStyles[props.tag], textAlign: props.align}}
-          value={props.text} 
+          value={text} 
           ref={textInput} 
         />
       </div>
-      <div className="input-group mb-3">
+      {/* <div className="input-group mb-3">
         <span className="input-group-text">Custom Style</span>
         <input type="text" 
           className="form-control mb0" 
           onChange={e => setStyle(e.target.value)} 
           value={style} 
         />
-      </div>
+      </div> */}
       <button type="submit" className="btn btn-outline-primary">Done</button>
       <button type="reset" className="btn btn-outline-secondary">Cancel</button>
     </form>

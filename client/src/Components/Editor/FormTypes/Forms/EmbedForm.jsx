@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { EmbedModel } from './models';
 
 
@@ -18,6 +18,12 @@ const EmbedForm = props => {
     props.cancel();
   }
 
+  useEffect(() => {
+    if(props.ele) {
+      setText(props.ele.content);
+    }
+  }, [props.tag]);
+
   return (
     <>
       <div className="content-section" 
@@ -27,7 +33,8 @@ const EmbedForm = props => {
           className="form-control"
           style={{resize: "none"}}
           placeholder="Paste the embed link here" 
-          onClick={e => setText(e.target.value)} />
+          onChange={e => setText(e.target.value)} 
+          value={text} />
         <button type="submit" className="btn btn-outline-primary">Done</button>
         <button type="reset" className="btn btn-outline-secondary">Cancel</button>
       </form>

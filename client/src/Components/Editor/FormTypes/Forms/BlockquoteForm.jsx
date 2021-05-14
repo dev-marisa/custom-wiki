@@ -19,9 +19,14 @@ const BlockquoteForm = props => {
   }
 
   useEffect(() => {
-    let p = document.createElement("p");
-    p.appendChild(document.createTextNode("Your quote here"));
-    editorEl.current.appendChild(p);
+    if(props.ele) {
+      editorEl.current.innerHTML = props.ele.content;
+    } else {
+      let p = document.createElement("p");
+      p.appendChild(document.createTextNode("Your quote here"));
+      editorEl.current.appendChild(p);
+      editorEl.current.focus();
+    }
   }, [props.tag]);
 
   return (

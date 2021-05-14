@@ -71,9 +71,13 @@ const ListForm = props => {
   // add the first li into the list so the user can begin editing?
   // this seems to work 
   useEffect(() => {
-    let li = document.createElement("li");
-    li.appendChild(document.createTextNode("your list here"));
-    editorEl.current.appendChild(li);
+    if(props.ele) {
+      editorEl.current.innerHTML = props.ele.content;
+    } else {
+      let li = document.createElement("li");
+      li.appendChild(document.createTextNode("your list here"));
+      editorEl.current.appendChild(li);
+    }
   }, [props.tag]);
 
   return (

@@ -89,7 +89,7 @@ const ImageForm = props => {
           <input type="number" min="0" value={width} onChange={changeWidth} className="form-control" />
           <span className="input-group-text">px</span>
         </div>
-        </div> : "" }
+        </div> : ""}
 
       {src ? <figure style={{textAlign: props.align}}>
         <img src={src} alt={name} style={imgStyle}

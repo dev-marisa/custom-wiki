@@ -12,9 +12,7 @@ const AddSection = props => {
     setIsEditing(false);
   }
 
-  const cancel = data => {
-    setIsEditing(false);
-  }
+  const cancel = data => setIsEditing(false);
 
   return (
     <>

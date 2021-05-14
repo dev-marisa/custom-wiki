@@ -7,6 +7,7 @@ import ParagraphForm from './Forms/ParagraphForm';
 import BlockquoteForm from './Forms/BlockquoteForm';
 import EmbedForm from './Forms/EmbedForm';
 import ListForm from './Forms/ListForm';
+import TableForm from './Forms/TableForm';
 
 
 // When the user is editing a section, what is the type of form to display
@@ -14,15 +15,9 @@ const FormSelector = props => {
 
   const [tag, setTag] = useState("h1");
   const [align, setAlign] = useState("left");
-  const [text, setText] = useState("");
 
-  const done = data => {
-    props.done(data)
-  }
-
-  const cancel = data => {
-    props.cancel();
-  }
+  const done = data => props.done(data);
+  const cancel = data => props.cancel();
 
   useEffect( () => {
     console.log(tag);
@@ -38,7 +33,7 @@ const FormSelector = props => {
 
       {/* h1 -> h6 can all use the same form */}
       <Match tag={tag} pattern={/^(h)(1|2|3|4|5|6)$/}>
-        <HeadingForm tag={tag} align={align} done={done} cancel={cancel} text={text} setText={setText} />
+        <HeadingForm tag={tag} align={align} done={done} cancel={cancel} />
       </Match>
 
       {/* img tags will be contained in a <figure> */}
@@ -50,12 +45,12 @@ const FormSelector = props => {
       {/* a, code, strong, em, u */}
       {/* for simplicity I'll make it so it only goes one element deeper */}
       <Match tag={tag} pattern={/^(p)$/}>
-        <ParagraphForm tag={tag} align={align} done={done} cancel={cancel} text={text} setText={setText} />
+        <ParagraphForm tag={tag} align={align} done={done} cancel={cancel} />
       </Match>
 
       {/* basically the same as a paragraph to be honest */}
       <Match tag={tag} pattern={/^(blockquote)$/}>
-        <BlockquoteForm tag={tag} align={align} done={done} cancel={cancel} text={text} setText={setText} />
+        <BlockquoteForm tag={tag} align={align} done={done} cancel={cancel} />
       </Match>
 
       {/* a vimeo or youtube embed link can be used easily enough */}
@@ -69,7 +64,7 @@ const FormSelector = props => {
       </Match>
 
       <Match tag={tag} pattern={/^(table)$/}>
-        <p className="text-primary text-center py-3">TODO: "{tag}" not implemented</p>
+        <TableForm tag={tag} done={done} cancel={cancel} />
       </Match>
 
       <Match tag={tag} pattern={/^(file)$/}>

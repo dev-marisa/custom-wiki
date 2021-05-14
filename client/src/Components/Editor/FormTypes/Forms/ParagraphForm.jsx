@@ -17,6 +17,12 @@ const ParagraphForm = props => {
     props.cancel();
   }
 
+  useEffect(() => {
+    if(props.ele) {
+      editorEl.current.innerHTML = props.ele.content;
+    }
+  }, [props.tag]);
+
   const keypress = e => {
     console.log(e);
     if(e.keyCode === 9) {
@@ -42,6 +48,7 @@ const ParagraphForm = props => {
 
   useEffect(() => {
     editorEl.current.appendChild(document.createTextNode(""));
+    editorEl.current.focus();
   }, [props.tag]);
 
   return (

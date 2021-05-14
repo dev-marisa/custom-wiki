@@ -15,6 +15,9 @@ const Formatting = props => {
     }
     const selection = window.getSelection();
     console.log(type);
+    if(selection.type === "Caret") {
+      return; // nothing to do here
+    }
     console.log(selection);
     let parent = selection.anchorNode;
     if(parent.nodeName === "#text") {
