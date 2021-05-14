@@ -52,7 +52,7 @@ body {
     padding: 5px;
 }
 
-.img-upload {
+figure > img {
     image-rendering: auto;
     image-rendering: crisp-edges;
     image-rendering: pixelated;

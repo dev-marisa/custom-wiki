@@ -63,6 +63,7 @@ const ParagraphForm = props => {
           outline: "2px dashed #ccc",
           padding: "20px",
           whiteSpace: "pre",
+          overflowWrap: "anywhere",
           textAlign: props.align
         }}></p>
       <button type="submit" className="btn btn-outline-primary">Done</button>
