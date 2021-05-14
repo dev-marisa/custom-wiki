@@ -9,10 +9,6 @@ How hard can this be? &#129300;
 
 <img src="https://raw.githubusercontent.com/dev-marisa/custom-wiki/main/demo-gifs/header.gif" alt="headers" />
 
-### Headers
-
-<img src="https://raw.githubusercontent.com/dev-marisa/custom-wiki/main/demo-gifs/header.gif" alt="headers" />
-
 ### Images
 
 <img src="https://raw.githubusercontent.com/dev-marisa/custom-wiki/main/demo-gifs/img.gif" alt="images" />
